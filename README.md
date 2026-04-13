@@ -1,1 +1,2 @@
 # Tripleten web_project_around_es
+En este proyecto se implementó la configuración inicial de JavaScript, creando un archivo index.js enlazado correctamente al documento HTML. Se definió un array llamado initialCards, el cual contiene objetos con información de distintas ubicaciones (nombre e imagen). Posteriormente, se utilizó el método forEach() para recorrer el array e imprimir los nombres en la consola, verificando así la correcta estructura y funcionamiento de los datos antes de su futura integración dinámica en el DOM.
