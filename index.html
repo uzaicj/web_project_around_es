@@ -162,14 +162,16 @@
       <footer class="footer page__section">
         <p class="footer__copyright">© 2025 Around The U.S.</p>
       </footer>
-      <div class="popup" id="edit-popup">
+      <div class="popup" id="edit-popup"> <!-- Ventana emergente para editar el perfil -->
         <div class="popup__content">
-          <button
+          <!-- Botón para cerrar la ventana emergente -->
+          <button 
             aria-label="Cerrar ventana emergente"
-            class="popup__close"
+            class="popup__close" 
             type="button"
           ></button>
           <h3 class="popup__title">Editar perfil</h3>
+          <!-- Formulario para editar el perfil -->
           <form class="popup__form" id="edit-profile-form">
             <input
               class="popup__input popup__input_type_name"
@@ -183,18 +185,19 @@
               placeholder="Acerca de mí"
               type="text"
             />
-            <button class="button popup__button" type="submit">Guardar</button>
+            <button class="button popup__button" type="submit">Guardar</button> <!-- Botón para guardar los cambios del perfil -->
           </form>
         </div>
       </div>
-      <div class="popup" id="new-card-popup">
+      <div class="popup" id="new-card-popup"> <!-- Ventana emergente para agregar una nueva tarjeta -->
         <div class="popup__content">
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
             type="button"
-          ></button>
+          ></button> <!-- Botón para cerrar la ventana emergente -->
           <h3 class="popup__title">Nuevo lugar</h3>
+          <!-- Formulario para agregar una nueva tarjeta -->
           <form class="popup__form" id="new-card-form">
             <input
               class="popup__input popup__input_type_card-name"
@@ -210,17 +213,17 @@
               required
               type="url"
             />
-            <button class="button popup__button" type="submit">Crear</button>
+            <button class="button popup__button" type="submit">Crear</button> <!-- Botón para crear la nueva tarjeta -->
           </form>
         </div>
       </div>
-      <div class="popup" id="image-popup">
+      <div class="popup" id="image-popup"> <!-- Ventana emergente para mostrar la imagen ampliada -->
         <div class="popup__content popup__content_content_image">
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
             type="button"
-          ></button>
+          ></button> <!-- Botón para cerrar la ventana emergente -->
           <img alt="" class="popup__image" src="#" />
           <p class="popup__caption"></p>
         </div>
