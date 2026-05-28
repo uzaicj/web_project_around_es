@@ -1,4 +1,8 @@
-let initialCards = [
+// =====================
+// DATOS INICIALES
+// =====================
+
+const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
@@ -25,65 +29,219 @@ let initialCards = [
   },
 ];
 
-initialCards.forEach(function (item) {
-  console.log(item.name);
-});
-
-//Constantes 
-
-const profileEditButton = document.querySelector('.profile__edit-button'); // Botón para abrir la ventana emergente de edición del perfil
-
-const editPopup = document.querySelector('#edit-popup'); // Ventana emergente para editar el perfil
-
-const popupClose = editPopup.querySelector('.popup__close'); // Botón para cerrar la ventana emergente de edición del perfil
-
-//Funciones de apertura y cierre de la ventana emergente
+// =====================
+// UTILIDADES MODAL
+// =====================
 
 function openModal(modal) {
-  modal.classList.add('popup_is-opened');
+  modal.classList.add("popup_is-opened");
 }
+
 function closeModal(modal) {
-  modal.classList.remove('popup_is-opened');
+  modal.classList.remove("popup_is-opened");
 }
 
-//Eventos de apertura y cierre de la ventana emergente
+// =====================
+// POPUP EDITAR PERFIL
+// =====================
 
-profileEditButton.addEventListener('click', handleOpenEditModal);
+const profileEditButton = document.querySelector(".profile__edit-button");
 
-popupClose.addEventListener('click', function () {
-  closeModal(editPopup);
-});
+const editPopup = document.querySelector("#edit-popup");
 
-//Elementos del formulario de edición del perfil
+const editPopupCloseButton =
+  editPopup.querySelector(".popup__close");
 
-const editNameInput = editPopup.querySelector(".popup__input_type_name");
+const editProfileForm =
+  editPopup.querySelector("#edit-profile-form");
 
-const editDescriptionInput = editPopup.querySelector(".popup__input_type_description");
+const editNameInput =
+  editPopup.querySelector(".popup__input_type_name");
 
-const profileName = document.querySelector(".profile__title");
+const editDescriptionInput =
+  editPopup.querySelector(".popup__input_type_description");
 
-const profileDescription = document.querySelector(".profile__description");
+const profileName =
+  document.querySelector(".profile__title");
+
+const profileDescription =
+  document.querySelector(".profile__description");
 
 function fillProfileForm() {
   editNameInput.value = profileName.textContent;
   editDescriptionInput.value = profileDescription.textContent;
-};
+}
 
 function handleOpenEditModal() {
   fillProfileForm();
   openModal(editPopup);
 }
 
-//Formulario de edición del perfil
-
-const editProfileForm = editPopup.querySelector("#edit-profile-form");
-
-
 function handleProfileFormSubmit(event) {
   event.preventDefault();
+
   profileName.textContent = editNameInput.value;
   profileDescription.textContent = editDescriptionInput.value;
-  closeModal(editPopup);
-};
 
-editProfileForm.addEventListener('submit', handleProfileFormSubmit);
+  closeModal(editPopup);
+}
+
+profileEditButton.addEventListener(
+  "click",
+  handleOpenEditModal
+);
+
+editPopupCloseButton.addEventListener(
+  "click",
+  () => closeModal(editPopup)
+);
+
+editProfileForm.addEventListener(
+  "submit",
+  handleProfileFormSubmit
+);
+
+// =====================
+// TARJETAS
+// =====================
+
+const cardList = document.querySelector(".cards__list");
+
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.cloneNode(true);
+
+  const cardImage =
+    cardElement.querySelector(".card__image");
+
+  const cardTitle =
+    cardElement.querySelector(".card__title");
+
+  const likeButton =
+    cardElement.querySelector(".card__like-button");
+
+  const deleteButton =
+    cardElement.querySelector(".card__delete-button");
+
+  cardImage.alt = data.name;
+  cardImage.src = data.link;
+
+  cardTitle.textContent = data.name;
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(
+      "card__like-button_is-active"
+    );
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  return cardElement;
+}
+
+function renderCard(data) {
+  const cardElement = getCardElement(data);
+
+  cardList.prepend(cardElement);
+}
+
+initialCards.forEach(renderCard);
+
+// =====================
+// POPUP NUEVA TARJETA
+// =====================
+
+const addCardButton =
+  document.querySelector(".profile__add-button");
+
+const addCardPopup =
+  document.querySelector("#new-card-popup");
+
+const addCardPopupCloseButton =
+  addCardPopup.querySelector(".popup__close");
+
+const addCardForm =
+  addCardPopup.querySelector("#new-card-form");
+
+const cardNameInput =
+  addCardForm.querySelector(".popup__input_type_card-name");
+
+const cardLinkInput =
+  addCardForm.querySelector(".popup__input_type_url");
+
+function handleAddCardFormSubmit(event) {
+  event.preventDefault();
+
+  const newCardData = {
+    name: cardNameInput.value,
+    link: cardLinkInput.value,
+  };
+
+  renderCard(newCardData);
+
+  addCardForm.reset();
+
+  closeModal(addCardPopup);
+}
+
+addCardButton.addEventListener(
+  "click",
+  () => openModal(addCardPopup)
+);
+
+addCardPopupCloseButton.addEventListener(
+  "click",
+  () => closeModal(addCardPopup)
+);
+
+addCardForm.addEventListener(
+  "submit",
+  handleAddCardFormSubmit
+);
+
+// =====================
+// POPUP IMAGEN
+// =====================
+
+const imagePopup =
+  document.querySelector("#image-popup");
+
+const imagePopupCloseButton =
+  imagePopup.querySelector(".popup__close");
+
+const imagePopupImage =
+  imagePopup.querySelector(".popup__image");
+
+const imagePopupCaption =
+  imagePopup.querySelector(".popup__caption");
+
+imagePopupCloseButton.addEventListener(
+  "click",
+  () => closeModal(imagePopup)
+);
+
+cardList.addEventListener("click", (event) => {
+  if (event.target.classList.contains("card__image")) {
+    const cardElement =
+      event.target.closest(".card");
+
+    const cardTitle =
+      cardElement.querySelector(".card__title")
+        .textContent;
+
+    const cardImageSrc = event.target.src;
+
+    imagePopupImage.src = cardImageSrc;
+
+    imagePopupImage.alt = cardTitle;
+
+    imagePopupCaption.textContent = cardTitle;
+
+    openModal(imagePopup);
+  }
+});
