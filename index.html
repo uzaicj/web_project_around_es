@@ -7,8 +7,10 @@
     <title>Around The U.S.</title>
     <link href="./pages/index.css" rel="stylesheet" />
   </head>
+
   <body class="page">
     <div class="page__content">
+
       <header class="header page__section">
         <img
           alt="Logotipo Around The U.S."
@@ -16,37 +18,47 @@
           src="./images/logo.svg"
         />
       </header>
+
       <main class="content">
+
         <section class="profile page__section">
           <img class="profile__image" src="./images/avatar.jpg" alt="Avatar" />
+
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
+
             <button
               aria-label="Editar perfil"
               class="profile__edit-button"
               type="button"
             ></button>
+
             <p class="profile__description">Explorador</p>
           </div>
+
           <button
             aria-label="Agregar tarjeta"
             class="profile__add-button"
             type="button"
           ></button>
         </section>
+
         <section class="cards page__section">
-          <ul class="cards__list">
-          </ul>
+          <ul class="cards__list"></ul>
+
           <template id="card-template">
             <li class="card">
               <img class="card__image" src="" alt="" />
+
               <button
                 aria-label="Eliminar tarjeta"
                 class="card__delete-button"
                 type="button"
               ></button>
+
               <div class="card__description">
                 <h2 class="card__title"></h2>
+
                 <button
                   aria-label="Botón Me gusta"
                   class="card__like-button"
@@ -56,21 +68,27 @@
             </li>
           </template>
         </section>
+
       </main>
+
       <footer class="footer page__section">
         <p class="footer__copyright">© 2025 Around The U.S.</p>
       </footer>
-      <div class="popup" id="edit-popup"> <!-- Ventana emergente para editar el perfil -->
+
+      <!-- POPUP EDIT PROFILE -->
+      <div class="popup" id="edit-popup">
         <div class="popup__content">
-          <!-- Botón para cerrar la ventana emergente -->
-          <button 
+
+          <button
             aria-label="Cerrar ventana emergente"
-            class="popup__close" 
+            class="popup__close"
             type="button"
           ></button>
+
           <h3 class="popup__title">Editar perfil</h3>
-          <!-- Formulario para editar el perfil -->
+
           <form class="popup__form" id="edit-profile-form" novalidate>
+
             <input
               class="popup__input popup__input_type_name"
               name="name"
@@ -81,7 +99,8 @@
               maxlength="40"
               required
             />
-            <span class="profileName-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de nombre -->
+            <span class="profileName-input-error popup__input-error"></span>
+
             <input
               class="popup__input popup__input_type_description"
               name="description"
@@ -92,21 +111,30 @@
               maxlength="200"
               required
             />
-            <span class="profileDescription-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de descripción -->
-            <button class="button popup__button" type="submit">Guardar</button> <!-- Botón para guardar los cambios del perfil -->
+            <span class="profileDescription-input-error popup__input-error"></span>
+
+            <button class="button popup__button" type="submit">
+              Guardar
+            </button>
+
           </form>
         </div>
       </div>
-      <div class="popup" id="new-card-popup"> <!-- Ventana emergente para agregar un nuevo lugar -->
+
+      <!-- POPUP NEW CARD -->
+      <div class="popup" id="new-card-popup">
         <div class="popup__content">
+
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
             type="button"
-          ></button> <!-- Botón para cerrar la ventana emergente -->
+          ></button>
+
           <h3 class="popup__title">Nuevo lugar</h3>
-          <!-- Formulario para agregar un nuevo lugar -->
+
           <form class="popup__form" id="new-card-form" novalidate>
+
             <input
               class="popup__input popup__input_type_card-name"
               id="newPlaceName"
@@ -117,7 +145,8 @@
               maxlength="30"
               required
             />
-            <span class="newPlaceName-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de título -->
+            <span class="newPlaceName-input-error popup__input-error"></span>
+
             <input
               class="popup__input popup__input_type_url"
               id="newPlaceLink"
@@ -126,23 +155,34 @@
               type="url"
               required
             />
-            <span class="newPlaceLink-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de enlace -->
-            <button class="button popup__button" type="submit">Crear</button> <!-- Botón para crear el nuevo lugar -->
+            <span class="newPlaceLink-input-error popup__input-error"></span>
+
+            <button class="button popup__button" type="submit">
+              Crear
+            </button>
+
           </form>
         </div>
       </div>
-      <div class="popup" id="image-popup"> <!-- Ventana emergente para mostrar la imagen ampliada -->
+
+      <!-- POPUP IMAGE -->
+      <div class="popup" id="image-popup">
         <div class="popup__content popup__content_content_image">
+
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
             type="button"
-          ></button> <!-- Botón para cerrar la ventana emergente -->
+          ></button>
+
           <img alt="" class="popup__image" src="#" />
           <p class="popup__caption"></p>
+
         </div>
       </div>
+
     </div>
+
     <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

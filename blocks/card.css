@@ -71,23 +71,25 @@
 
 /* ====== ERRORES ====== */
 
-.popup__input.form__input_type_error {
+.popup__input_type_error {
   border-bottom-color: red;
   border-bottom-width: 2px;
-} /*input invalido*/
+} /* input inválido */
 
-.form__input-error {
+.popup__input-error {
   display: none;
-} /*mensaje de error span oculto*/
+} /* mensaje oculto */
 
-.form__input-error_active {
+.popup__input-error_active {
   display: block;
   color: red;
   font-size: 12px;
-} /*mensaje de error debajo del input- span visible*/
+} /* mensaje visible */
 
 /* ====== BOTON DISABLED ====== */
-.popup__button:disabled, .popup__button:hover:disabled {
+
+.popup__button:disabled,
+.popup__button:hover:disabled {
   background: #ccc;
   color: #fff;
   cursor: not-allowed;
