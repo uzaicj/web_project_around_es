@@ -3,10 +3,10 @@ function showError(formElement, inputElement) {
     `.${inputElement.id}-input-error`
   );
 
-  inputElement.classList.add("form__input_type_error");
+  inputElement.classList.add("popup__input_type_error");
 
   errorElement.textContent = inputElement.validationMessage;
-  errorElement.classList.add("form__input-error_active");
+  errorElement.classList.add("popup__input-error_active");
 }
 
 function hideError(formElement, inputElement) {
@@ -14,10 +14,10 @@ function hideError(formElement, inputElement) {
     `.${inputElement.id}-input-error`
   );
 
-  inputElement.classList.remove("form__input_type_error");
+  inputElement.classList.remove("popup__input_type_error");
 
   errorElement.textContent = "";
-  errorElement.classList.remove("form__input-error_active");
+  errorElement.classList.remove("popup__input-error_active");
 }
 
 function checkInputValidity(formElement, inputElement) {
@@ -29,9 +29,9 @@ function checkInputValidity(formElement, inputElement) {
 }
 
 function hasInvalidInput(inputList) {
-  return Array.from(inputList).some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
+  return Array.from(inputList).some(
+    (inputElement) => !inputElement.validity.valid
+  );
 }
 
 function toggleButtonState(inputList, buttonElement) {
