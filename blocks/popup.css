@@ -157,3 +157,30 @@
     padding: 0;
   }
 }
+
+/* ====== ERRORES ====== */  
+/*correción: Estos estilos se cambiaron de cards.css a popup.css*/
+
+.popup__input_type_error {
+  border-bottom-color: red;
+  border-bottom-width: 2px;
+} /* input inválido */
+
+.popup__input-error {
+  display: none;
+} /* mensaje oculto */
+
+.popup__input-error_active {
+  display: block;
+  color: red;
+  font-size: 12px;
+} /* mensaje visible */
+
+/* ====== BOTON DISABLED ====== */
+
+.popup__button:disabled,
+.popup__button:hover:disabled {
+  background: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}

@@ -45,7 +45,9 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscClose);
 
   const form = modal.querySelector(".popup__form");
-  if (form) {
+
+    if (form) {
+    form.reset();  //correción: resetear el formulario al cerrar el modal
     resetValidation(form);
   }
 }
@@ -226,8 +228,6 @@ function handleAddCardFormSubmit(event) {
   };
 
   renderCard(newCardData);
-
-  addCardForm.reset();
 
   closeModal(addCardPopup);
 }
