@@ -70,24 +70,34 @@
           ></button>
           <h3 class="popup__title">Editar perfil</h3>
           <!-- Formulario para editar el perfil -->
-          <form class="popup__form" id="edit-profile-form">
+          <form class="popup__form" id="edit-profile-form" novalidate>
             <input
               class="popup__input popup__input_type_name"
               name="name"
+              id="profileName"
               placeholder="Nombre"
               type="text"
+              minlength="2"
+              maxlength="40"
+              required
             />
+            <span class="profileName-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de nombre -->
             <input
               class="popup__input popup__input_type_description"
               name="description"
+              id="profileDescription"
               placeholder="Acerca de mí"
               type="text"
+              minlength="2"
+              maxlength="200"
+              required
             />
+            <span class="profileDescription-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de descripción -->
             <button class="button popup__button" type="submit">Guardar</button> <!-- Botón para guardar los cambios del perfil -->
           </form>
         </div>
       </div>
-      <div class="popup" id="new-card-popup"> <!-- Ventana emergente para agregar una nueva tarjeta -->
+      <div class="popup" id="new-card-popup"> <!-- Ventana emergente para agregar un nuevo lugar -->
         <div class="popup__content">
           <button
             aria-label="Cerrar ventana emergente"
@@ -95,23 +105,29 @@
             type="button"
           ></button> <!-- Botón para cerrar la ventana emergente -->
           <h3 class="popup__title">Nuevo lugar</h3>
-          <!-- Formulario para agregar una nueva tarjeta -->
-          <form class="popup__form" id="new-card-form">
+          <!-- Formulario para agregar un nuevo lugar -->
+          <form class="popup__form" id="new-card-form" novalidate>
             <input
               class="popup__input popup__input_type_card-name"
+              id="newPlaceName"
               name="place-name"
               placeholder="Título"
-              required
               type="text"
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span class="newPlaceName-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de título -->
             <input
               class="popup__input popup__input_type_url"
+              id="newPlaceLink"
               name="link"
               placeholder="Enlace a la imagen"
-              required
               type="url"
+              required
             />
-            <button class="button popup__button" type="submit">Crear</button> <!-- Botón para crear la nueva tarjeta -->
+            <span class="newPlaceLink-input-error form__input-error"></span> <!-- Elemento para mostrar el mensaje de error del campo de enlace -->
+            <button class="button popup__button" type="submit">Crear</button> <!-- Botón para crear el nuevo lugar -->
           </form>
         </div>
       </div>
@@ -127,6 +143,6 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

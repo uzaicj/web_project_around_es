@@ -1,3 +1,5 @@
+import { setEventListeners, resetValidation } from "./validate.js";
+
 // =====================
 // DATOS INICIALES
 // =====================
@@ -35,11 +37,52 @@ const initialCards = [
 
 function openModal(modal) {
   modal.classList.add("popup_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
+
+  const form = modal.querySelector(".popup__form");
+  if (form) {
+    resetValidation(form);
+  }
 }
+// =====================
+// cierre del modal mediante overlay
+// =====================
+
+function handleOverlayClickClose(event) {
+  if (event.target === event.currentTarget) {
+  closeModal(event.currentTarget)
+}
+}
+
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", handleOverlayClickClose);
+});
+
+// cierre del modal mediante ESC
+function handleEscClose(event) {
+const popup = document.querySelector(".popup_is-opened");
+
+  if (event.key === "Escape") {
+    closeModal(popup);
+  }
+}
+
+// =====================
+// INICIALIZAR VALIDACIÓN DE FORMULARIOS
+// =====================
+
+const formList = document.querySelectorAll(".popup__form");
+
+formList.forEach((formElement) => {
+  setEventListeners(formElement);
+});
 
 // =====================
 // POPUP EDITAR PERFIL

@@ -68,3 +68,27 @@
 .card__like-button_is-active {
   background: transparent url("../images/like-active.svg") no-repeat;
 }
+
+/* ====== ERRORES ====== */
+
+.popup__input.form__input_type_error {
+  border-bottom-color: red;
+  border-bottom-width: 2px;
+} /*input invalido*/
+
+.form__input-error {
+  display: none;
+} /*mensaje de error span oculto*/
+
+.form__input-error_active {
+  display: block;
+  color: red;
+  font-size: 12px;
+} /*mensaje de error debajo del input- span visible*/
+
+/* ====== BOTON DISABLED ====== */
+.popup__button:disabled, .popup__button:hover:disabled {
+  background: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
