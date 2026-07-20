@@ -178,8 +178,7 @@
 
 /* ====== BOTON DISABLED ====== */
 
-.popup__button:disabled,
-.popup__button:hover:disabled {
+.popup__button_disabled{
   background: #ccc;
   color: #fff;
   cursor: not-allowed;
