@@ -19,10 +19,21 @@ export class Card {
         const titleElement = element.querySelector(".card__title");
         titleElement.textContent = this._cardData.name;
     }
+    _handleDeleteCard = (element) => {
+        element.remove();
+    };
     _setEventListeners(element) {
         const imageElement = element.querySelector(".card__image");
         imageElement.addEventListener('click', () => {
             this._handleCardClick(this._cardData);
+        });
+        const likeButton = element.querySelector(".card__like-button");
+        likeButton.addEventListener('click', () => {
+            likeButton.classList.toggle('card__like-button_is-active');
+        });
+        const deleteButton = element.querySelector(".card__delete-button");
+        deleteButton.addEventListener('click', () => {
+            this._handleDeleteCard(element);
         });
     }
     generateCard() {

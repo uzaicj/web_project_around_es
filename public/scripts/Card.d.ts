@@ -6,6 +6,7 @@ export declare class Card {
     constructor(cardData: CardData, selector: string, handleCardClick: (data: CardData) => void);
     private _getTemplate;
     private _setCardContent;
+    private _handleDeleteCard;
     private _setEventListeners;
     generateCard(): HTMLElement;
 }
