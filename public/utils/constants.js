@@ -5,4 +5,3 @@ export const defaultFormConfig = {
     popupInputTypeError: 'popup__input_type_error',
     popupInputErrorActive: 'popup__input-error_active',
 };
-//# sourceMappingURL=constants.js.map
